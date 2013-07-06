@@ -54,4 +54,12 @@ describe('Array', function() {
     });
   });
 
+  describe('#select', function() { 
+    it('should return another array with the values that satisfy the condition', function() {
+      var result = [2,4,7].select(isEven);
+
+      assert( [2,4].equals(result));
+    });
+  });
+
 });

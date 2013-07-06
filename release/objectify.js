@@ -57,3 +57,15 @@ array.collect = function(closure) {
 
   return result;
 }
+
+array.select = function(closure) { 
+  var result = [];
+
+  for(var i=0; i<this.length; i++) {
+    if(closure(this[i])) { 
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+}
