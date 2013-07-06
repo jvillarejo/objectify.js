@@ -9,6 +9,19 @@ array.first = function() {
   }
 };
 
+array.equals = function(otherArray) { 
+  if(this.length != otherArray.length) { 
+    return false;
+  }
+
+  for(var i = 0; i < this.length; i++) { 
+    if( this[i] != otherArray[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 array.last = function() { 
   if(this.length > 0) { 
     return this[this.length -1];
@@ -25,3 +38,22 @@ array.any = function(condition) {
   }
   return false;
 };
+
+array.all = function(condition) { 
+  for(var i=0; i<this.length; i++) { 
+    if(!condition(this[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+array.collect = function(closure) { 
+  var result = [];
+
+  for(var i=0; i<this.length; i++) { 
+    result.push(closure(this[i]));
+  }
+
+  return result;
+}

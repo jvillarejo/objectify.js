@@ -2,6 +2,18 @@ var assert = require("assert");
 var array = require("../release/objectify")
 
 describe('Array', function() { 
+  var isEven = function(number) { 
+    return (number % 2) == 0;
+  }
+
+  describe('#equals',function() { 
+    it('should return true if the two arrays contains the same exact objects', function() {
+      assert( [1,2,3].equals([1,2,3]) );
+      assert( ! [3,2].equals([3,2,1]) );
+      assert( ["giggity", "giggity"].equals(["giggity", "giggity"] ));
+    });
+  })
+
   describe('#first()', function(){
     it('should return the first value of array or null if there is nothing', function() {
       assert.equal(1, [1,2,3].first());
@@ -18,13 +30,27 @@ describe('Array', function() {
 
   describe('#any', function() { 
     it('should return true if any satisfy the condition or false if none', function() {
-      var isEven = function(number) { 
-        return (number % 2) == 0;
-      }
-
       assert.equal(true, [1,2,3].any(isEven));
       assert.equal(false, [1,3,5].any(isEven));
 
+    });
+  });
+
+  describe('#all', function() { 
+    it('should return true if all satisfy the condition if false if any doesn\'t satisfy',function() {
+      assert.equal(true, [2,4,6].all(isEven));
+      assert.equal(false, [2,5,6].all(isEven));
+    });
+  });
+
+  describe('#collect', function() {
+    it('should return another array with the results of the function with the array values as argument', function() {
+      var multiplyBy2 = function(number) { 
+        return number * 2;
+      }
+
+      var result = [1,2,3].collect(multiplyBy2);
+      assert( [2,4,6].equals(result) );
     });
   });
 
