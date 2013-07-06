@@ -1,0 +1,21 @@
+{
+  "name": "objetify.js",
+  "version": "0.0.1",
+  "description": "A library that adds beautiful objects",
+  "main": "objectify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "objects",
+    "javascript",
+    "beatiful"
+  ],
+  "author": "JonVillage",
+  "license": "BSD",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
